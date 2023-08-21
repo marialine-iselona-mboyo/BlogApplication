@@ -4,45 +4,59 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h4 class="text-primary">
+                Post Details
+            </h4>
+        </div>
+    </div>
+    <hr />
+    <div class="row pb-3">
+        <div class="">
+            <div class="row p-2">
+                <div class="col-12 p-1" style="border:1px solid #000000; border-radius: 5px">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-sm-12">
+                                <h6>@Html.DisplayNameFor(model => model.Title)</h6>
+                                <p>@Html.DisplayFor(model => model.Title)</p>
+                                <br />
+                            </div>
+                            <div class="col-sm-12">
+                                <h6>@Html.DisplayNameFor(model => model.Author)</h6>
+                                <p>@Html.DisplayFor(model => model.Author)</p>
+                                <br />
+                            </div>
+                            <div class="col-sm-12">
+                                <h6>@Html.DisplayNameFor(model => model.Body)</h6>
+                                <p>@Html.DisplayFor(model => model.Body)</p>
+                                <br />
+                            </div>
+                            <div class="col-sm-12">
+                                <h6>@Html.DisplayNameFor(model => model.CreatedAt)</h6>
+                                <p>@Html.DisplayFor(model => model.CreatedAt)</p>
+                                <br />
+                            </div>
+                            <div class="col-sm-12">
+                                <h6>@Html.DisplayNameFor(model =>  model.Category)</h6>
+                                <p>@Html.DisplayFor(model =>  model.Category.Name)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Body)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary mx-2">Edit</a> |
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary mx-2">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger mx-2">Delete</a>
+    }
+
     <a asp-action="Index" class="btn btn-primary mx-2">Back to List</a>
 </div>

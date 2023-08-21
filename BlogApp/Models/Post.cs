@@ -24,5 +24,6 @@ namespace BlogApp.Models
         [ForeignKey(nameof(CategoryId))]
         [ValidateNever]
         public Category Category { get; set; }
+
     }
 }
