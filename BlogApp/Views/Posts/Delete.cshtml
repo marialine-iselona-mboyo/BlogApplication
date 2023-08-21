@@ -1,0 +1,41 @@
+﻿@model BlogApp.Models.Post
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row pb-2">
+    <h2 class="text-primary">
+        Delete Post
+    </h2>
+    <hr />
+    <h4>Are you sure you want to delete this?</h4>
+</div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div>
+        <h4>Post</h4>
+        <hr />
+        <div class="mb-3 row p-1">
+            <label asp-for="Title" class="p-0"></label>
+            <input asp-for="Title" disabled class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Author" class="p-0"></label>
+            <input asp-for="Author" disabled class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Body" class="p-0"></label>
+            <input asp-for="Body" disabled class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="CreatedAt" class="p-0"></label>
+            <input asp-for="CreatedAt" disabled class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-danger form-control" style="width:150px">
+            Delete
+        </button>
+        <a asp-action="Index" class="btn btn-primary" style="width:150px">Back to List</a>
+    </div>
+</form>
+
