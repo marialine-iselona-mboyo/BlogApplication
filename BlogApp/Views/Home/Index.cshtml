@@ -1,4 +1,7 @@
-﻿@model IEnumerable<BlogApp.Models.Post>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model IEnumerable<BlogApp.Models.Post>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -17,14 +20,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div>
-                                        <p class="card-title h5 text-primary">@post.Title</p>
-                                        <p class="card-title text-info">by <b>@post.Author</b></p>
-                                        <p>@post.Body</p>
+                                        <p class="card-title h5 text-primary">@Localizer[post.Title]</p>
+                                        <p class="card-title text-info">by <b>@Localizer[post.Author]</b></p>
+                                        <p>@Localizer[post.Body]</p>
                                     </div>
                                 </div>
                                 <div>
                                     <a class="btn btn-primary form-control m-2" style="width:120px" href="/Posts/Details/@post.Id">
-                                        Details
+                                        @Localizer["Details"]
                                     </a>
                                 </div>
                             </div>
